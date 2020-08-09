@@ -44,7 +44,36 @@ class User {
         for (var i = 0; i < allCol.length - 1; i++) {
             allCol[i].setAttribute("contenteditable", "true");
         }
+        allCol[0].focus();
         this.clickSave(id);
+        this.clickCancel(id);
+    }
+    handleCancel(id) {
+        const row = document.getElementById(`${id}-row`);
+        const data = row.querySelectorAll("td");
+        data[0].innerText = this.firstName;
+        data[1].innerText = this.middleName;
+        data[2].innerText = this.lastName;
+        data[3].innerText = this.email;
+        data[4].innerHTML = `${this.phoneNumber}`;
+        data[5].innerText = this.role;
+        data[6].innerText = this.address;
+        const editBtn = document.getElementById(`${id}-edit`);
+        const saveBtn = document.getElementById(`${id}-save`);
+        const cancelBtn = document.getElementById(`${id}-cancel`);
+        const delBtn = document.getElementById(`${id}-del`);
+        editBtn.style.display = "block";
+        delBtn.style.display = "block";
+        saveBtn.style.display = "none";
+        cancelBtn.style.display = "none";
+        const allCol = row.querySelectorAll("td");
+        for (var i = 0; i < allCol.length - 1; i++) {
+            allCol[i].setAttribute("contenteditable", "false");
+        }
+    }
+    clickCancel(id) {
+        const element = document.getElementById(`${id}-cancel`);
+        element.addEventListener("click", this.handleCancel.bind(this, id));
     }
     handleSave(id) {
         const row = document.getElementById(`${id}-row`);

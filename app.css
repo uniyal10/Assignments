@@ -4,6 +4,12 @@
   font-family: "Times New Roman", Times, serif;
   background-color: azure;
 }
+header {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
 
 table {
   width: 90%;
@@ -21,11 +27,13 @@ th {
 td {
   padding: 20px;
 }
+#btnDiv {
+  margin: 20px;
+  align-items: center;
+  text-align: center;
+}
 #btn {
   padding: 10px 30px;
-  position: absolute;
-  left: 50%;
-  bottom: 10%;
   background-color: goldenrod;
   border: none;
   border-radius: 8px;
