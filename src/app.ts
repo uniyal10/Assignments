@@ -44,7 +44,9 @@ class User {
     const id = Math.random() * 10
     const edit = `<a id='${id}-edit' href='#' >Edit</a>`
     const del = `<a id='${id}-del' href='#'>Delete</a>`
-    const element = `<tr id='${id}-row'><td>${this.firstName}</td><td>${this.middleName}</td><td>${this.lastName}</td><td>${this.email}</td><td>${this.phoneNumber}</td><td>${this.role}</td><td>${this.address}</td><td>${edit}${del}</td></tr>`
+    const save = `<a style="display:none;color:green;" id='${id}-save' href='#'>Save</a>`
+    const cancel = `<a style="display:none;color:red;" id='${id}-cancel' href='#'>Cancel</a>`
+    const element = `<tr id='${id}-row'><td>${this.firstName}</td><td>${this.middleName}</td><td>${this.lastName}</td><td>${this.email}</td><td>${this.phoneNumber}</td><td>${this.role}</td><td>${this.address}</td><td>${edit}${del}${save}${cancel}</td></tr>`
     this.container.insertAdjacentHTML("beforeend", element)
     this.clickEdit(id)
     this.clickDelete(id)
@@ -59,16 +61,55 @@ class User {
   }
   handleEdit(id: number) {
     const row = document.getElementById(`${id}-row`)!
+    const editBtn = document.getElementById(`${id}-edit`)!
+    const saveBtn = document.getElementById(`${id}-save`)!
+    const cancelBtn = document.getElementById(`${id}-cancel`)!
+    const delBtn = document.getElementById(`${id}-del`)!
+
+    editBtn.style.display = "none"
+    delBtn.style.display = "none"
+
+    saveBtn.style.display = "block"
+    cancelBtn.style.display = "block"
+
     const allCol = row.querySelectorAll("td")!
     for (var i = 0; i < allCol.length - 1; i++) {
       allCol[i].setAttribute("contenteditable", "true")
     }
+    this.clickSave(id)
+    // this.clickCacel(id)
   }
+  handleSave(id: number) {
+    const row = document.getElementById(`${id}-row`)!
+    const editBtn = document.getElementById(`${id}-edit`)!
+    const saveBtn = document.getElementById(`${id}-save`)!
+    const cancelBtn = document.getElementById(`${id}-cancel`)!
+    const delBtn = document.getElementById(`${id}-del`)!
+
+    editBtn.style.display = "block"
+    delBtn.style.display = "block"
+
+    saveBtn.style.display = "none"
+    cancelBtn.style.display = "none"
+    const allCol = row.querySelectorAll("td")!
+    for (var i = 0; i < allCol.length - 1; i++) {
+      allCol[i].setAttribute("contenteditable", "false")
+    }
+  }
+
+  clickSave(id: number) {
+    const element = document.getElementById(`${id}-save`)!
+    element.addEventListener("click", this.handleSave.bind(this, id))
+  }
+  // clickCancel(id: number) {
+
+  // }
   clickEdit(id: number) {
     const element = document.getElementById(`${id}-edit`)!
     element.addEventListener("click", this.handleEdit.bind(this, id))
   }
 }
+
 class UserList {
   // firstName: string
   // lastName: string
