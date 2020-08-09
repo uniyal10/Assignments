@@ -1,0 +1,65 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Times New Roman", Times, serif;
+  background-color: azure;
+}
+
+table {
+  width: 90%;
+  border: none;
+  background-color: gray;
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  margin: auto;
+}
+th {
+  padding: 20px;
+}
+td {
+  padding: 20px;
+}
+#btn {
+  padding: 10px 30px;
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  background-color: goldenrod;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  z-index: 1;
+}
+
+#refresh {
+  padding: 10px 30px;
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  display: none;
+  background-color: goldenrod;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  z-index: 0;
+}
+#extra {
+  opacity: 0;
+}
+a {
+  padding: 10px;
+  border: 1px solid black;
+  margin: 3px;
+  background-color: aqua;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
